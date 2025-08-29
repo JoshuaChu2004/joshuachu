@@ -19,9 +19,9 @@
                     <span class="muted" style="font-size: 13px">Game Developer • Software Engineer • D&D Homebrew Creator</span>
                 </div>
                 <div class="links">
-                    <a href="#games">Video Games</a>
-                    <a href="#homebrew">Software</a>
-                    <a href="#internship">D&D</a>
+                    <a href="#games" data-short="Games">Video Games</a>
+                    <a href="#software">Software</a>
+                    <a href="#homebrew">D&D</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -32,7 +32,7 @@
     <main class="container">
         <!-- HERO -->
         <section class="hero">
-            <div>
+            <div class="intro-content">
                 <span class="kicker">Portfolio</span>
                 <div class="slogan">Crafting Immersive Gameplay,<br>
                     Building Solutions,<br>
@@ -72,7 +72,76 @@
                     <span class="dot" onclick="goToSlide(1)"></span>
                     <span class="dot" onclick="goToSlide(2)"></span>
                     <span class="dot" onclick="goToSlide(3)"></span>
-                    <span class="dot" onclick="goToSlide(4)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Games Section -->
+        <section id="games" class="section">
+            <div class="section-header">Video Games</div>
+            <div class="grid projects">
+                <div class="project-card">
+                    <a class="project-title" href="https://spiritboundstudios.itch.io/into-the-depths" target="_blank" rel="noopener">Into the Depths</a>
+                    <div class="project-description">A roguelike deckbuilder game where you start out with a set of cards and battle monsters to gain new ones. Upgrade your deck, collect features, and loot items off of monsters!</div>
+                    <img src="assets/intothedepths.png" alt="Into the Depths" />
+                    <a class="project-link" href="https://spiritboundstudios.itch.io/into-the-depths" target="_blank" rel="noopener">Play Now</a>
+                </div>
+                <div class="project-card">
+                    <a class="project-title" href="https://spiritboundstudios.itch.io/volley" target="_blank" rel="noopener">Volley!</a>
+                    <div class="project-description">A 2D volleyball game where you play as a volleyball player trying to win matches.</div>
+                    <img src="assets/volley.png" alt="Volley!" />
+                    <a class="project-link" href="https://spiritboundstudios.itch.io/volley" target="_blank" rel="noopener">Play Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Software Section -->
+        <section id="software" class="section">
+            <div class="section-header">Software Projects</div>
+            <div class="grid projects">
+                <div class="project-card">
+                    <a class="project-title" href="#" target="_blank" rel="noopener">Seat Map Application</a>
+                    <div class="project-description">Frontend engineering work for VBO Tickets, developing interactive seat maps for event ticketing.</div>
+                    <img src="assets/seatmap.png" alt="Seat Map Application" />
+                    <a class="project-link" href="#" target="_blank" rel="noopener">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- D&D Homebrew Section -->
+        <section id="homebrew" class="section">
+            <div class="section-header">D&D Homebrew Content</div>
+            <div class="grid projects">
+                <div class="project-card">
+                    <a class="project-title" href="#" target="_blank" rel="noopener">Way of the Rising Storm</a>
+                    <div class="project-description">A custom D&D 5e monk subclass focused on lightning and storm abilities.</div>
+                    <img src="assets/WayOfTheRisingStorm/WayOfTheRisingStorm-1.png" alt="Way of the Rising Storm" />
+                    <a class="project-link" href="#" target="_blank" rel="noopener">View Content</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">About Me</div>
+            <div class="section-content">
+                <div class="about-paragraph">Born in San Jose to immigrant parents, I grew up immersed in technology — but it was the interactivity of computer games that first inspired me. By third grade, I had already set my sights on becoming a game developer.</div>
+                <div class="about-paragraph">I'm currently pursuing a B.S. in Computer Science at UC Santa Barbara, where I serve as an officer in the UCSB Game Development Club. I lead projects ranging from narrative experiments to mechanics-driven prototypes, organize events, and mentor new members in game design and development.</div>
+                <div class="about-paragraph">In Fall 2025, I released Into the Depths, a solo-developed roguelike deckbuilder in Godot featuring a persistent deck system to encourage strategic play. I also led development on Spirit, a Unity-based 2D RPG with dual protagonists and hybrid mechanics like rhythm-based combat and word-building spells. Though on hold, it shaped my growth as a systems designer and team lead.</div>
+                <div class="about-paragraph">Currently, I'm a Software Engineering Intern at VBO Tickets, contributing to a platform-wide front-end upgrade. I developed a new WebGL-powered seat map using PixiJS, designed to render up to 100,000 seats simultaneously with smooth performance — a major scalability improvement for large venues. I also implemented a dynamic sidebar using JavaScript, C#, HTML, and CSS, enabling users to sort and select seats in real time by price, value, or availability.</div>
+                <div class="about-paragraph">I'm passionate about designing immersive, meaningful experiences where engineering meets storytelling — whether through gameplay, narrative, or interactive systems.</div>
+                <div class="about-paragraph">📌 Open to roles in game development, front-end engineering, or creative software focused on player experience and interactivity.</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">Get In Touch</div>
+            <div class="section-content">
+                <div class="contact-text">I'm always interested in new opportunities and collaborations. Feel free to reach out!</div>
+                <div class="contact-links">
+                    <a class="btn" href="mailto:chujoshua2004@gmail.com">Email Me</a>
+                    <a class="btn" href="https://www.linkedin.com/in/chujoshua2004" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
         </section>
@@ -80,18 +149,36 @@
 
     <script>
         let currentSlide = 0;
-        const totalSlides = 5;
+        const totalSlides = 4;
         const track = document.querySelector('.carousel-track');
         const dots = document.querySelectorAll('.dot');
+        let autoAdvanceInterval;
+
+        function startAutoAdvance() {
+            // Clear any existing interval
+            if (autoAdvanceInterval) {
+                clearInterval(autoAdvanceInterval);
+            }
+            // Start new interval
+            autoAdvanceInterval = setInterval(() => {
+                scrollCarousel(1);
+            }, 5000);
+        }
+
+        function resetAutoAdvance() {
+            startAutoAdvance();
+        }
 
         function scrollCarousel(direction) {
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             updateCarousel();
+            resetAutoAdvance(); // Reset timer when manually navigating
         }
 
         function goToSlide(slideIndex) {
             currentSlide = slideIndex;
             updateCarousel();
+            resetAutoAdvance(); // Reset timer when clicking dots
         }
 
         function updateCarousel() {
@@ -104,10 +191,8 @@
             });
         }
 
-        // Auto-advance carousel every 5 seconds
-        setInterval(() => {
-            scrollCarousel(1);
-        }, 5000);
+        // Start auto-advance on page load
+        startAutoAdvance();
     </script>
 </body>
 </html>

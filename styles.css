@@ -4,6 +4,7 @@
     --muted: #a8b3c2;
     --brand: #58c4ff;
     --card: #131720;
+    --card-light: #1a1f2c;
     --accent: #ffd166;
     --border: rgba(255, 255, 255, 0.09);
 }
@@ -57,6 +58,28 @@ nav .links {
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
+    font-size: 14px;
+}
+
+/* Responsive navigation text */
+@media (max-width: 1120px) {
+    nav .links a[data-short]::before {
+        content: attr(data-short);
+    }
+    
+    nav .links a[data-short] {
+        font-size: 0;
+    }
+    
+    nav .links a[data-short]::before {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 900px) {
+    nav .links {
+        display: none;
+    }
 }
 
 nav a {
@@ -74,7 +97,7 @@ nav a {
 
 .hero {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr 500px;
     gap: 32px;
     align-items: center;
     padding: 54px 0 32px;
@@ -226,6 +249,46 @@ footer {
     left: -9999px;
 }
 
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Account for sticky header when scrolling to sections */
+section[id] {
+    scroll-margin-top: 60px;
+}
+
+/* About and Contact sections */
+.about-content, .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-content p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.about-paragraph {
+    margin-bottom: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.contact-text {
+    margin-bottom: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.contact-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
 .slogan {
     font-size: 32px;
     font-weight: 1000;
@@ -239,11 +302,57 @@ footer {
     margin: 0 0 18px;
 }
 
+.section-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.intro-content {
+        width: 70vh;
+        margin: 0 auto;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.project-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.project-description {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.project-link {
+    font-size: 14px;
+    color: var(--brand);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    width: fit-content;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: var(--card-light);
+}
+
+
 /* Image Carousel Styles */
 .image-carousel {
     position: relative;
     width: 400px;
-    height: 400px;
+    height: 350px;
     border-radius: 18px;
     overflow: hidden;
     background: var(--card);
@@ -336,7 +445,7 @@ footer {
     background: rgba(255, 255, 255, 0.8);
 }
 
-@media (max-width: 880px) {
+@media (max-width: 1120px) {
     .hero {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -346,8 +455,8 @@ footer {
     }
     .image-carousel {
         width: 100%;
-        max-width: 400px;
-        height: 300px;
+        max-width: 500px;
+        height: 350px;
         margin: 0 auto;
     }
     .slogan {
