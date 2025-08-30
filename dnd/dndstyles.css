@@ -1,7 +1,9 @@
 :root {
-    --bg: #0b0d10;
-    --fg: #e9eef3;
-    --muted: #a8b3c2;
+    --bg: #f3eee5;
+    --fg: #434241;
+    --hfg:#f3f1e9;
+    --muted: #6e757e;
+    --hmuted: #a8b3c2;
     --brand: #58c4ff;
     --card: #131720;
     --card-light: #1a1f2c;
@@ -30,16 +32,21 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline; 
 }
 
 .container {
     width: min(1100px, 92vw);
     margin-inline: auto;
 }
+
 .header-container {
     width: min(1100px, 92vw);
     margin-inline: 24px 0;
+    color: var(--hfg);
+}
+.header-container .muted {
+    color: var(--hmuted);
 }
 
 header {
@@ -87,7 +94,7 @@ nav .links {
 }
 
 nav a {
-    color: var(--fg);
+    color: var(--hfg);
     opacity: 0.9;
 }
 
@@ -286,59 +293,6 @@ section[id] {
     line-height: 1.7;
 }
 
-/* Styles for markdown-generated content with semantic classes */
-.section-content .paragraph {
-    color: var(--muted);
-}
-
-.section-content .title {
-    color: var(--fg);
-    font-size: 28px;
-    font-weight: 700;
-    margin-top: 24px;
-    margin-bottom: 16px;
-}
-
-.section-content .header {
-    color: var(--fg);
-    font-size: 24px;
-    font-weight: 600;
-    margin-top: 24px;
-    margin-bottom: 16px;
-}
-
-.section-content .subheader {
-    color: var(--fg);
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 12px;
-}
-
-.section-content .title:first-child,
-.section-content .header:first-child,
-.section-content .subheader:first-child {
-    margin-top: 0;
-}
-
-.section-content .bold {
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.section-content .italic {
-    font-style: italic;
-}
-
-.section-content .link {
-    color: var(--brand);
-    text-decoration: none;
-}
-
-.section-content .link:hover {
-    text-decoration: underline;
-}
-
 .contact-links {
     display: flex;
     gap: 12px;
@@ -524,4 +478,50 @@ section[id] {
     .slogan {
         font-size: 24px;
     }
+}
+
+/* Styles for markdown-generated content with semantic classes */
+.section-content .paragraph {
+    color: var(--muted);
+}
+
+.section-content .title {
+    color: var(--fg);
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 24px;
+}
+
+.section-content .header {
+    color: var(--fg);
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.section-content .subheader {
+    color: var(--fg);
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.section-content .bold {
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.section-content .italic {
+    font-style: italic;
+}
+
+.section-content .link {
+    color: var(--brand);
+    text-decoration: none;
+}
+
+.section-content .link:hover {
+    text-decoration: underline;
 }
